@@ -11,7 +11,8 @@
   "dependencies": {
     "jquery": "3.4.1",
     "font-awesome-5-css": "5.4.1",
-    "materialize-css": "1.0.0"
+    "materialize-css": "1.0.0",
+    "google-font": "1.0.1"
   },
   "devDependencies": {
     "gulp": "4.0.0",

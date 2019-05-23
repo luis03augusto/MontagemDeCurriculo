@@ -1,0 +1,42 @@
+{
+  "_from": "google-font@1.0.1",
+  "_id": "google-font@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha1-QWQfuXm26fpahtEM4BuU+rfEUHE=",
+  "_location": "/google-font",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "google-font@1.0.1",
+    "name": "google-font",
+    "escapedName": "google-font",
+    "rawSpec": "1.0.1",
+    "saveSpec": null,
+    "fetchSpec": "1.0.1"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://artefatos.pedes.caixa/nexus/content/groups/npm-all-windows/google-font/-/google-font-1.0.1.tgz",
+  "_shasum": "41641fb979b6e9fa5a86d10ce01b94fab7c45071",
+  "_spec": "google-font@1.0.1",
+  "_where": "C:\\Users\\p793066\\source\\repos\\MontagemDeCurriculo\\MontagemDeCurriculo",
+  "author": "",
+  "bin": {
+    "google-font": "index.js"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "shelljs": "^0.6.0"
+  },
+  "deprecated": false,
+  "description": "Download google font offline to use in webpages",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "google-font",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}
