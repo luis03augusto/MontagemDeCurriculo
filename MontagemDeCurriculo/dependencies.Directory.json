@@ -1,0 +1,13 @@
+{
+  "jquery": {
+    "dist/*.js": ""
+  },
+  "materialize-css": {
+    "dist/**/*.css": "",
+    "dist/**/*.js": ""
+  },
+  "font-awesome-5-css": {
+    "css/*.css": "css",
+    "webfonts/*": "webfonts"
+  }
+}
