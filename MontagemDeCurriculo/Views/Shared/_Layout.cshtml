@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MontagemDeCurriculo</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="~/vendor/font-awesome-5-css/css/all.css" rel="stylesheet" />
-    <link href="~/vendor/materialize-css/css/materialize.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" asp-append-version="true">
+    <link href="~/vendor/font-awesome-5-css/css/all.css" rel="stylesheet"  asp-append-version="true"/>
+    <link href="~/vendor/materialize-css/css/materialize.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -21,7 +21,7 @@
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li><a asp-action="Registro" asp-controller="Usuarios">Registro</a></li>
-                            <li><<a asp-action="Login" asp-controller="Usuarios">Login</a></li>
+                            <li><a asp-action="Login" asp-controller="Usuarios">Login</a></li>
                         }
                         else
                         {
@@ -47,8 +47,8 @@
         </div>
     </footer>
 
-    <script src="~/vendor/jquery/jquery.js"></script>
-    <script src="~/vendor/materialize-css/js/materialize.js"></script>
+    <script src="~/vendor/jquery/jquery.js" asp-append-version="true"></script>
+    <script src="~/vendor/materialize-css/js/materialize.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

@@ -27,7 +27,7 @@ namespace MontagemDeCurriculo.Models
         public int AnoFim { get; set; }
 
         [Required(ErrorMessage = "Campo {0} obrigatório")]
-        [StringLength(50, ErrorMessage = "Use menos caracteres")]
+        [StringLength(500, ErrorMessage = "Use menos caracteres")]
         [DataType(DataType.MultilineText)]
         public string DescricaoAtividade  { get; set; }
         public int CurriculoId { get; set; }

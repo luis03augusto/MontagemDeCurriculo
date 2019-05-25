@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MontagemDeCurriculo.Mapeamento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,24 @@ namespace MontagemDeCurriculo.Models
         public DbSet<FormacaoAcademica> FormacoesAcademicas{ get; set; }
         public DbSet<Objetivo> Objetivos{ get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<InformacaoLogin> informacaoLogins { get; set; }
 
         public Contexto(DbContextOptions<Contexto> options) :base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CurriculoMap());
+            modelBuilder.ApplyConfiguration(new ExperienciaProfissionalMap());
+            modelBuilder.ApplyConfiguration(new IdiomaMap());
+            modelBuilder.ApplyConfiguration(new TipoCursoMap());
+            modelBuilder.ApplyConfiguration(new InformacaoLoginMap());
+            modelBuilder.ApplyConfiguration(new ObjetivosMap());
+            modelBuilder.ApplyConfiguration(new UsuariosMap());
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
