@@ -53,7 +53,7 @@ namespace MontagemDeCurriculo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CurriculoId,Nome,UsuarioId")] Curriculo curriculo)
         {
-            curriculo.UsuarioId = int.Parse(HttpContext.Session.GetInt32("UsuarioID").ToString());
+            curriculo.UsuarioId = int.Parse(HttpContext.Session.GetInt32("UsuarioId").ToString());
             if (ModelState.IsValid)
             {
                 _context.Add(curriculo);
@@ -74,8 +74,7 @@ namespace MontagemDeCurriculo.Controllers
             if (curriculo == null)
             {
                 return NotFound();
-            }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "Email", curriculo.UsuarioId);
+            }            
             return View(curriculo);
         }
 
@@ -83,7 +82,7 @@ namespace MontagemDeCurriculo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CurriculoId,Nome,UsuarioId")] Curriculo curriculo)
         {
-            curriculo.UsuarioId = int.Parse(HttpContext.Session.GetInt32("UsuarioID").ToString());
+            curriculo.UsuarioId = int.Parse(HttpContext.Session.GetInt32("UsuarioId").ToString());
             if (id != curriculo.CurriculoId)
             {
                 return NotFound();
@@ -113,7 +112,7 @@ namespace MontagemDeCurriculo.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> DeleteConfirmed(int id)
+        public async Task<JsonResult> Delete(int id)
         {
             var curriculo = await _context.Curriculos.FindAsync(id);
             _context.Curriculos.Remove(curriculo);

@@ -47,8 +47,8 @@
         <p>Deseja prosseguir com a exclusão </p>
     </div>
     <div class="modal-footer">
-        <a class="modal-close green accent-4">Não</a>
-        <a class="modal-close red btnConfirmar accent-4">Sim</a>
+        <a class="btn btn-small modal-close green accent-4">Não</a> &nbsp;
+        <a class="btn btn-small modal-close red btnConfirmar accent-4">Sim</a>
     </div>
 </div>
 
@@ -59,7 +59,7 @@
         });
 
         function ExibirModal(id) {
-            $("#modal").modal("open");
+            $("#modal1").modal("open");
 
             $(".btnConfirmar").on("click", function () {
                 $.ajax({

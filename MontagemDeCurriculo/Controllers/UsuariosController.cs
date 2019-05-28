@@ -50,7 +50,7 @@ namespace MontagemDeCurriculo.Controllers
                 _context.Add(informacao);
                 await _context.SaveChangesAsync();
 
-                HttpContext.Session.SetInt32("UsuarioID", usuario.UsuarioId);
+                HttpContext.Session.SetInt32("UsuarioId", usuario.UsuarioId);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Email, usuario.Email)
@@ -96,7 +96,7 @@ namespace MontagemDeCurriculo.Controllers
                 await _context.SaveChangesAsync();
 
 
-                HttpContext.Session.SetInt32("UsuarioID", id);
+                HttpContext.Session.SetInt32("UsuarioId", id);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Email, login.Email)
