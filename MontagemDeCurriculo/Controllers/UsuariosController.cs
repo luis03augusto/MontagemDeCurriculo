@@ -50,7 +50,7 @@ namespace MontagemDeCurriculo.Controllers
                 _context.Add(informacao);
                 await _context.SaveChangesAsync();
 
-                HttpContext.Session.SetInt32("UsuarioId", usuario.UsuarioId);
+                HttpContext.Session.SetInt32("UsuarioID", usuario.UsuarioId);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Email, usuario.Email)
@@ -79,45 +79,55 @@ namespace MontagemDeCurriculo.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _context.Usuarios.Any(x => x.Email == login.Email && x.Senha == login.Senha))
             {
-                if (_context.Usuarios.Any(x => x.Email == login.Email && x.Senha == login.Senha))
+
+                int id = _context.Usuarios.Where(x => x.Email == login.Email && x.Senha == login.Senha).Select(x => x.UsuarioId).Single();
+
+                InformacaoLogin informacao = new InformacaoLogin
                 {
-                    int id = _context.Usuarios.Where(x => x.Email == login.Email && x.Senha == login.Senha).Select(x => x.UsuarioId).Single();
+                    UsuarioId = id,
+                    EnderecoIP = Request.HttpContext.Connection.RemoteIpAddress.ToString(),
+                    Data = DateTime.Now.ToShortDateString(),
+                    Horario = DateTime.Now.ToShortTimeString()
+                };
 
-                    InformacaoLogin informacao = new InformacaoLogin
-                    {
-                        UsuarioId = id,
-                        EnderecoIP = Request.HttpContext.Connection.RemoteIpAddress.ToString(),
-                        Data = DateTime.Now.ToShortDateString(),
-                        Horario = DateTime.Now.ToShortTimeString()
-                    };
-
-                    _context.Add(informacao);
-                    await _context.SaveChangesAsync();
+                _context.Add(informacao);
+                await _context.SaveChangesAsync();
 
 
-                    HttpContext.Session.SetInt32("UsuarioId", id);
-                    var claims = new List<Claim>
+                HttpContext.Session.SetInt32("UsuarioID", id);
+                var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Email, login.Email)
                 };
 
-                    var userIdentity = new ClaimsIdentity(claims, "login");
-                    ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+                var userIdentity = new ClaimsIdentity(claims, "login");
+                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 
-                    await HttpContext.SignInAsync(principal);
+                await HttpContext.SignInAsync(principal);
 
 
-                    return RedirectToAction("Index", "Curriculos");
-                }
+                return RedirectToAction("Index", "Curriculos");
+
             }
             return View(login);
         }
 
-        private bool UsuarioExists(int id)
+        public async Task<IActionResult> LogOut()
         {
-            return _context.Usuarios.Any(e => e.UsuarioId == id);
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Login", "Usuarios");
+        }
+
+        public JsonResult UsuarioExiste(string email)
+        {
+            if (!_context.Usuarios.Any(x => x.Email == email))
+                return Json(true);
+            return Json("Email existente");
+
         }
     }
 }

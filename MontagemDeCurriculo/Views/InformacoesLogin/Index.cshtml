@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MontagemDeCurriculo.Models.InformacaoLogin>
+
+@{
+    ViewData["Title"] = "Minhas onformações de login";
+}
+
+<div class="tabelaLogins container">
+
+    <h5>@ViewData["Title"]</h5>
+    <br />
+
+    <a class="btn btn-small green darken-4" asp-action="DowloandDados" asp-controller="InformacoesLogin">Exportar para CSV</a>
+
+    <div class="informacoresTabela">
+
+        <table class="table striped highlight centered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EnderecoIP)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Horario)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EnderecoIP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Horario)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Login">
+            <form asp-action="Login" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="row">
@@ -31,8 +31,8 @@
                 </div>
 
                 <div class="row">
-                    <input type="submit" value="Logar" class="btn btn-small green darken-1" /> &nbsp;
-                    <a asp-action="Registro" asp-controller="Usuario">Registrar</a>
+                    <input type="submit" value="Login" class="btn btn-small green darken-1" /> &nbsp;
+                    <a asp-action="Registro" >Registrar</a>
                 </div>
             </form>
         </div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,11 +13,12 @@ namespace MontagemDeCurriculo.Models
 
         [Required(ErrorMessage = "Campo {0} obrigatório")]
         [StringLength(50, ErrorMessage = "Use menos caracteres")]
-        [EmailAddress(ErrorMessage ="Email Inválido")]        
+        [EmailAddress(ErrorMessage = "Email Inválido")]
+        [Remote("UsuarioExiste", "Usuarios")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Campo {0} obrigatório")]
-        [StringLength(50, ErrorMessage = "Use menos caracteres")]        
+        [StringLength(50, ErrorMessage = "Use menos caracteres")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 

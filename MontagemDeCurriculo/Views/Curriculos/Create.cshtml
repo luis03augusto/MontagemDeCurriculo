@@ -1,14 +1,14 @@
-﻿@model MontagemDeCurriculo.Models.TipoCurso
+﻿@model MontagemDeCurriculo.Models.Curriculo
 
 @{
-    ViewData["Title"] = "Novo tipo de cursos";
+    ViewData["Title"] = "Novo currículo";
 }
 
 <div class="formulario">
 
+    <h5>@ViewData["Title"]</h5>
 
-
-    <h4>@ViewData["Title"]</h4>
+    <h4>Curriculo</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
@@ -16,19 +16,18 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="row">
                     <div class="input-fild col s6">
-                        <input asp-for="Tipo" type="password" class="validate" />
-                        <label asp-for="Tipo"></label>
-                        <span asp-validation-for="Tipo" class="red-text darken-3"></span>
+                        <input asp-for="Nome"  class="validate" />
+                        <label asp-for="Nome"></label>
+                        <span asp-validation-for="Nome" class="red-text darken-3"></span>
                     </div>
                 </div>
                 <div class="row">
                     <input type="submit" value="Salvar" class="btn btn-small green darken-1" /> &nbsp;
-                    <a asp-action="Index" asp-controller="Usuario">Voltar</a>
+                    <a asp-action="Index" class="btn btn-small grey lighten-1">Voltar</a>
                 </div>
             </form>
         </div>
     </div>
-
 </div>
 
 @section Scripts {
