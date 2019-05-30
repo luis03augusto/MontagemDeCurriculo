@@ -4,11 +4,16 @@
     ViewData["Title"] = "Curriculo " + Model.Nome;
 }
 
+<div class="col s2">
+    <h5>Currículo @Model.Nome</h5> &nbsp;
+    <a class="btn red darken-4" asp-controller="Curriculos" asp-action="VisualizarComoPDF">PDF</a>
+</div>
+
 <div>
     <ul class="collection with-header">
         <li class="collection-header">
             <h5>
-                Onjetivos
+                Objetivos
                 <a asp-action="Create" asp-controller="Objetivos" asp-route-id="@Model.CurriculoId" class="btn-floating btn-small blue darken-4">
                     <i class="material-icons">add</i>
                 </a>
@@ -16,4 +21,79 @@
         </li>
         @await Component.InvokeAsync("Objetivos", Model.CurriculoId)
     </ul>
+
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Formações Academicas
+                <a asp-action="Create" asp-controller="FormacoesAcademicas" asp-route-id="@Model.CurriculoId" class="btn-floating btn-small blue darken-4">
+                    <i class="material-icons">add</i>
+                </a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("FormacaoAcademicas", Model.CurriculoId)
+    </ul>
+
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Experiancias Profissionais
+                <a asp-action="Create" asp-controller="ExperienciaProfissionals" asp-route-id="@Model.CurriculoId" class="btn-floating btn-small blue darken-4">
+                    <i class="material-icons">add</i>
+                </a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("ExperienciasProfissionais", Model.CurriculoId)
+    </ul>
+
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Idiomas
+                <a asp-action="Create" asp-controller="Idiomas" asp-route-id="@Model.CurriculoId" class="btn-floating btn-small blue darken-4">
+                    <i class="material-icons">add</i>
+                </a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("Idiomas", Model.CurriculoId)
+    </ul>
 </div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmar exclusão</h4>
+        <p>Deseja prosseguir com a exclusão </p>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-small modal-close green accent-4">Não</a> &nbsp;
+        <a class="btn btn-small modal-close red btnConfirmar accent-4">Sim</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".modal").modal();
+        });
+
+        function ExibirModal(id, objeto) {
+
+            var url = "/" + objeto +"/Delete"
+            $("#modal1").modal("open");
+
+            $(".btnConfirmar").on("click", function () {
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    data: { id: id },
+                    success: function () {
+                        alert("Exclusão feita com sucesso");
+                        location.reload();
+                    }
+                });
+            });
+        }
+    </script>
+}

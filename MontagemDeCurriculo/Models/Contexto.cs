@@ -16,7 +16,8 @@ namespace MontagemDeCurriculo.Models
         public DbSet<FormacaoAcademica> FormacoesAcademicas{ get; set; }
         public DbSet<Objetivo> Objetivos{ get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<InformacaoLogin> informacaoLogins { get; set; }
+        public DbSet<InformacaoLogin> InformacaoLogins { get; set; }
+        public DbSet<ExperienciaProfissional> ExperienciaProfissionais { get; set; }
 
         public Contexto(DbContextOptions<Contexto> options) :base(options)
         {

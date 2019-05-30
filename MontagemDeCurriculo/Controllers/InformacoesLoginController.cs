@@ -22,14 +22,14 @@ namespace MontagemDeCurriculo.Controllers
         {
             var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
 
-            return View(await _contexto.informacaoLogins.Include(x => x.Usuario).Where(x => x.UsuarioId == usuarioId).ToListAsync());
+            return View(await _contexto.InformacaoLogins.Include(x => x.Usuario).Where(x => x.UsuarioId == usuarioId).ToListAsync());
         }
 
         public IActionResult DowloandDados()
         {
             var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
 
-            var dados = _contexto.informacaoLogins.Include(x => x.Usuario).Where(x => x.UsuarioId == usuarioId).ToList();
+            var dados = _contexto.InformacaoLogins.Include(x => x.Usuario).Where(x => x.UsuarioId == usuarioId).ToList();
             StringBuilder arquivo = new StringBuilder();
 
             arquivo.AppendLine("EnderecoIP;Data;Horatio");
